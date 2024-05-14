@@ -1,0 +1,63 @@
+npm install framer-motion
+import { motion } from "framer-motion"
+<motion.div></motion.div>
+_____________________________________________
+
+initial, animate, transition,
+<motion.div 
+    initial={{ }}
+    animate={{ }}
+    transition={{ }}
+></motion.div>
+_____________________________________________
+
+instead of only passing a single value we can give multiple keyframe value
+by passing value in array
+eg:
+<motion.div
+    animate={{
+        x: [0, 50, 10, 100, 0]
+    }}
+></motion.div>
+
+we can further control the keyframe timing with percentages. eg:
+<motion.div
+    animate={{
+        x: [0, 50, 10, 100, 0]
+    }}
+    duration={{
+        duration: 1,
+        timing: [0, 0.25, 0.5, 0.85, 1]             // set with percentages
+    }}
+></motion.div>
+
+_____________________________________________
+
+to toggle:
+const [isVisible, setIsVisible] = useState(true);
+
+<button 
+    onClick={()=>setIsVisible(!isVisible)}
+>Show/Hide</button>
+
+{isVisible && ( <motion.div/> )}
+_____________________________________________
+
+"AnimatePresence" allows components to animate out when they're removed from the React tree.
+<AnimatePresence>
+    {isVisible && ( <motion.div exit={{}}/> )}    // used in toggle option
+</AnimatePresence>
+
+we can use exit={}, as initial or animate       // when element exit out of screen it animate by exit={{}}
+_____________________________________________
+
+there are different mode in AnimatePresence
+<AnimatePresence 
+    mode='popLayout'                // instantly go to the position remove the animation and do the task given
+    /* add layout to button for smooth movement */
+></AnimatePresence>
+_____________________________________________
+
+
+import { MotionConfig } from 'framer-motion'
+<MotionConfig></MotionConfig>       // define transition in this and it will be apply on every child
