@@ -10,7 +10,9 @@ function BasicsOfMotion() {
             className='bg-blue-500 h-10 w-56 rounded-xl text-white font-bold text-xl'
             layout
         >Show/Hide</motion.button>
-        <AnimatePresence mode='popLayout'>
+        <AnimatePresence 
+            // mode='popLayout'
+        >
             {isVisible && (<motion.div 
                 initial={{ 
                     rotate: '0deg',
